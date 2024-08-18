@@ -6,6 +6,7 @@ export interface IDataPost {
     category: string;
     date: string;
     image: string;
+    content: string;
 }
 
 export class PostModel {
@@ -16,6 +17,7 @@ export class PostModel {
     category: string;
     date: string;
     image: string;
+    content: string;
 
     constructor(data: IDataPost) {
         this.id = data.id;
@@ -25,5 +27,6 @@ export class PostModel {
         this.category = data.category;
         this.date = data.date;
         this.image = data.image;
+        this.content = data.content;
     }
 }

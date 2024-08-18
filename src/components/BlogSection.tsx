@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { BlogService } from "@/services/blog.service";
+import Link from "next/link";
 
 export const BlogSection = async () => {
 
@@ -9,27 +10,27 @@ export const BlogSection = async () => {
     return (
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 pt-10 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3 mb-36">
             {listOfPosts.map((post) => (
-                <article key={post.id} className="flex max-w-xl flex-col items-start justify-between">
-                    <a href={post.id}>
+                <article key={post.id} className="flex max-w-xl flex-col items-start justify-between border rounded-xl overflow-hidden">
+                    <Link href={post.id}>
                         <img src={post.image} alt={post.category} />
-                    </a>
-                    <div className="flex items-center gap-x-4 text-xs">
+                    </Link>
+                    <div className="flex items-center gap-x-4 text-xs px-5">
                         <time dateTime={post.date.toString()} className="text-gray-500">
                             {post.date}
                         </time>
-                        <a
+                        <Link
                             href={'/blog?category=' + post.category}
                             className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
                         >
                             {post.category}
-                        </a>
+                        </Link>
                     </div>
-                    <div className="group relative">
+                    <div className="group relative px-5 pb-5">
                         <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                            <a href={post.id}>
+                            <Link href={post.id}>
                                 <span className="absolute inset-0" />
                                 {post.title}
-                            </a>
+                            </Link>
                         </h3>
                         <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{post.description}</p>
                     </div>

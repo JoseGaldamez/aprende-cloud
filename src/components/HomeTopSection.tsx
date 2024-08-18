@@ -6,7 +6,7 @@ export const HomeTopSection = () => {
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
                     <h1 className="mb-4 text-4xl font-extrabold max-w-4xl tracking-tight leading-none md:text-5xl lg:text-6xl">Aprende Cloud</h1>
-                    <p className="mb-8 text-lg font-normal max-w-2xl text-gray-500 lg:text-xl">
+                    <p className="mb-8 font-normal max-w-2xl text-gray-500">
                         Este espacio está creado para compartir lo aprendido sobre la computación en la nube mientras curso las certificaciones oficiales de Google Cloud Platform. Espero este espacio sirva de reforzamiento y repaso para aquellos que también es apasiona este tema.
                     </p>
                     <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0">

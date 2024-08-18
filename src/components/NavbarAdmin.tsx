@@ -13,7 +13,7 @@ import {
 } from '@heroicons/react/24/outline'
 import Link from 'next/link';
 
-export const Navbar = () => {
+export const NavbarAdmin = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
     return (
@@ -80,22 +80,16 @@ export const Navbar = () => {
                         </PopoverPanel>
                     </Popover> */}
 
-                    <Link href="/blog?category=Infrastructure" className="text-sm font-semibold leading-6 text-gray-900">
-                        Infraestructura
+                    <Link href="/admin/addNewPost" className="text-sm font-semibold leading-6 text-gray-900">
+                        Crear nuevo post
                     </Link>
-                    <Link href="/blog?category=Storage" className="text-sm font-semibold leading-6 text-gray-900">
-                        Almacenamiento
-                    </Link>
-                    <Link href="/blog?category=Security" className="text-sm font-semibold leading-6 text-gray-900">
-                        Seguridad
+                    <Link href="/admin/profile" className="text-sm font-semibold leading-6 text-gray-900">
+                        Perfil
                     </Link>
                 </PopoverGroup>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <Link href="#" className="text-sm font-semibold leading-6 text-gray-900">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                        </svg>
-
+                    <Link href="/logout" className="text-sm font-semibold leading-6 text-red-500">
+                        Cerrar sesión
                     </Link>
                 </div>
             </nav>
@@ -104,7 +98,7 @@ export const Navbar = () => {
                 <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                     <div className="flex items-center justify-between">
                         <Link href="#" className="-m-1.5 p-1.5">
-                            <span className="sr-only">Your Company</span>
+                            <span className="sr-only">Aprende Cloud</span>
                             <img
                                 alt=""
                                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
@@ -145,20 +139,15 @@ export const Navbar = () => {
                                     href="/blog?category=Infrastructure"
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                 >
-                                    Infraestructura
+                                    Crear nuevo post
                                 </Link>
                                 <Link
                                     href="/blog?category=Storage"
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                 >
-                                    Almacenamiento
+                                    Perfil
                                 </Link>
-                                <Link
-                                    href="/blog?category=Security"
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                                >
-                                    Seguridad
-                                </Link>
+
                             </div>
                             <div className="py-6">
                                 <Link

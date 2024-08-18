@@ -1,7 +1,13 @@
 import { firestore } from "@/firebase/config";
 import { PostModel } from "@/models/post.model";
 import { Firestore } from "@firebase/firestore";
-import { collection, getDocs, getCountFromServer } from "firebase/firestore";
+import {
+    collection,
+    getDocs,
+    doc,
+    getDoc,
+    getCountFromServer,
+} from "firebase/firestore";
 
 let firestoreDB: Firestore;
 
@@ -32,5 +38,14 @@ export class BlogService {
         });
 
         return this.listOfPosts;
+    };
+
+    getPostsByID = async (id: string) => {
+        const docRef = doc(this.db, "blog", id);
+        const querySnapshot = await getDoc(docRef);
+        if (querySnapshot.exists()) {
+            const post = querySnapshot.data();
+            return post;
+        }
     };
 }
