@@ -15,6 +15,9 @@ import Link from 'next/link';
 
 export const Navbar = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+    const [searchValue, setSearchValue] = useState("")
+    const [searchPanel, setSearchPanel] = useState(false)
+    const [showMessageWorking, setShowMessageWorking] = useState(false)
 
     return (
         <header className="bg-white">
@@ -80,23 +83,23 @@ export const Navbar = () => {
                         </PopoverPanel>
                     </Popover> */}
 
-                    <Link href="/blog?category=Infrastructure" className="text-sm font-semibold leading-6 text-gray-900">
-                        Infraestructura
+                    <Link href="/blog" className="text-sm font-semibold leading-6 text-gray-900">
+                        Blog
                     </Link>
-                    <Link href="/blog?category=Storage" className="text-sm font-semibold leading-6 text-gray-900">
+                    {/* <Link href="/blog?category=Storage" className="text-sm font-semibold leading-6 text-gray-900">
                         Almacenamiento
                     </Link>
                     <Link href="/blog?category=Security" className="text-sm font-semibold leading-6 text-gray-900">
                         Seguridad
-                    </Link>
+                    </Link> */}
                 </PopoverGroup>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <Link href="#" className="text-sm font-semibold leading-6 text-gray-900">
+                    <button onClick={() => setSearchPanel(true)} className="text-sm font-semibold leading-6 text-gray-900">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                         </svg>
 
-                    </Link>
+                    </button>
                 </div>
             </nav>
             <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
@@ -142,12 +145,12 @@ export const Navbar = () => {
                                     </DisclosurePanel>
                                 </Disclosure> */}
                                 <Link
-                                    href="/blog?category=Infrastructure"
+                                    href="/blog"
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                 >
-                                    Infraestructura
+                                    Blog
                                 </Link>
-                                <Link
+                                {/* <Link
                                     href="/blog?category=Storage"
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                 >
@@ -158,23 +161,78 @@ export const Navbar = () => {
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                 >
                                     Seguridad
-                                </Link>
+                                </Link> */}
                             </div>
                             <div className="py-6">
-                                <Link
-                                    href="#"
+                                <button
+                                    onClick={() => {
+                                        setSearchPanel(true)
+                                        setMobileMenuOpen(false)
+                                    }}
                                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                                     </svg>
 
-                                </Link>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </DialogPanel>
             </Dialog>
+
+            {/* Search form */}
+
+            {
+                searchPanel && (
+                    <div className='fixed top-0 left-0 w-full h-full bg-white bg-opacity-95 z-50'>
+                        <div className='mx-auto max-w-7xl px-6 lg:px-8'>
+                            <div className='text-end mt-3'>
+                                <button onClick={() => setSearchPanel(false)}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-8">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                    </svg>
+
+                                </button>
+                            </div>
+                            <div className='mt-20 bg-white bg-opacity-50'>
+                                <h3 className='text-3xl font-bold py-5'>Buscar artículos sobre:</h3>
+                                <input
+                                    value={searchValue}
+                                    onChange={(e) => setSearchValue(e.target.value)}
+                                    onKeyPress={(e) => {
+                                        if (e.key === 'Enter') {
+                                            setShowMessageWorking(true);
+                                        } else {
+                                            setShowMessageWorking(false);
+                                        }
+                                    }}
+                                    type="text" placeholder='Almacenamiento, Arquitectura, etc...' className='bg-white border border-gray-500 rounded-lg text-xl p-3 block w-full' />
+
+                                <div className='m-5'>
+                                    {
+                                        showMessageWorking && (
+                                            <div>
+                                                <p className='text-lg my-5'>Buscando: <strong>{searchValue}
+                                                </strong></p>
+                                                <p className='text-gray-400 italic'>
+                                                    La funcionalidad de búsqueda aún está en desarrollo. Pronto podrá utilizarla sin problemas.
+                                                </p>
+                                            </div>
+                                        )
+                                    }
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                )
+            }
+
+
+
         </header>
     )
 }

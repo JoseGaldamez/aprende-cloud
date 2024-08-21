@@ -14,3 +14,50 @@
   font-weight: 300;
   color: #333;
 }
+
+.single-post q {
+  background-color: #f1f1f1;
+  padding: 2rem;
+  border-radius: 1rem;
+  display: block;
+  font-size: 1.2rem;
+  margin: 20px 0px;
+  color: #333;
+}
+
+.single-post q::after {
+  content: "";
+}
+
+.single-post q i {
+  margin-top: 10px;
+  display: block;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.single-post h3 {
+  font-size: 2rem;
+  border-bottom: solid #ccc 1px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+
+.single-post h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+
+.single-post img {
+  width: 100%;
+  margin: 20px 0px;
+  border-radius: 1rem;
+}
+
+.single-post hr {
+  margin-top: 10px;
+}

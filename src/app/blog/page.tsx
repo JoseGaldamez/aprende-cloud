@@ -19,8 +19,11 @@ const Blog = ({
             <Navbar />
             <main>
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                    <h2>{titleBlogPage}</h2>
-                    <BlogSection />
+                    <h2 className="my-10 text-2xl">{titleBlogPage}</h2>
+                    <hr />
+                    <div className="pt-10">
+                        <BlogSection />
+                    </div>
                 </div>
             </main>
         </>

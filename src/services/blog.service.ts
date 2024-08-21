@@ -7,6 +7,9 @@ import {
     doc,
     getDoc,
     getCountFromServer,
+    query,
+    orderBy,
+    limit,
 } from "firebase/firestore";
 
 let firestoreDB: Firestore;
@@ -30,7 +33,8 @@ export class BlogService {
             return this.listOfPosts;
         }
 
-        const querySnapshot = await getDocs(collectionPost);
+        const q = query(collectionPost, orderBy("index"), limit(9));
+        const querySnapshot = await getDocs(q);
 
         querySnapshot.docs.map((doc) => {
             const data: any = { ...doc.data(), id: doc.id };
@@ -44,8 +48,8 @@ export class BlogService {
         const docRef = doc(this.db, "blog", id);
         const querySnapshot = await getDoc(docRef);
         if (querySnapshot.exists()) {
-            const post = querySnapshot.data();
-            return post;
+            const data: any = { ...querySnapshot.data(), id };
+            return new PostModel(data);
         }
     };
 }

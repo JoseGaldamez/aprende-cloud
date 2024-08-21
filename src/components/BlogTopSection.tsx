@@ -11,7 +11,7 @@ export const BlogTopSection = ({ title, urlImage, date, description }: IBlogArti
 
     return (
         <>
-            <div className="mx-auto max-w-4xl px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <h2 className="text-6xl leading-tight mt-10 mb-5 ">{title}</h2>
                 <time className="text-sm text-gray-400 block mb-5">{date}</time>
                 <hr />
