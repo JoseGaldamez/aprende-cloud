@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Aprende Cloud | Todo sobre Google Cloud",
+  title: "Acelera Cloud Blog | Todo sobre Google Cloud Platform",
   description: "En este sitio web compartiré poco a poco todo lo que he aprendido sobre Google Cloud mediante sus cursos y talleres.",
 };
 
